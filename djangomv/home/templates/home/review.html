@@ -1,0 +1,16 @@
+{% extends "home/base.html" %}
+
+{% block title %}
+Review
+{% endblock %}
+{%  block main %}
+<h1>Review Page for {{ title }}</h1>
+    <form method="POST">
+        <div class="form-group">
+            <label for ='Feedback'> Feedback </label>
+            <textarea class="form-control" id="revie" name="review" rows="3"></textarea>
+        </div>
+        <buttom type="submit" class="btn btn-primary">Add Feedback</button>
+    </form>
+
+{% endblock %}

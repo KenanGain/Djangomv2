@@ -1,0 +1,53 @@
+{% extends "home/base.html" %}
+
+{% block title %}
+Movimax
+{% endblock %}
+
+
+{% block main %}
+<h1>{{ data.title }}</h1>
+<img src="https://image.tmdb.org/t/p/w200{{ data.poster_path }}" alt="{{ data.name }}">
+<h3>{{ data.tagline }}</h3>
+<h2>Review</h2>
+<img width="50" height="50" src="https://img.icons8.com/ios/50/thumbs-up-down.png" alt="thumbs-up-down"/>
+<h2>Description</h2>
+<p>{{ data.overview }}</p>
+<h2>Description from Wikipedia:</h2>
+<P> {{ wiki_summary.extract }} </p>
+<P> {{ wiki_summary2.extract }} </p>
+<h2>Production</h2>
+{% if data.production_companies %}
+    {% with company=data.production_companies.0 %}
+        <h3>{{ company.name }}</h3>
+        <img src="https://image.tmdb.org/t/p/w200{{ company.logo_path }}" alt="{{ company.name }}">
+    {% endwith %}
+{% endif %}
+<h2>Release Date</h2>
+<ul>
+        <li>{{ data.release_date }} </li>
+</ul>
+
+<h2>Languages</h2>
+<ul>
+        <li>{{ data.original_language }}</li>
+</ul>
+<h2 class="g1">Genres</h2>
+<ul>
+    {% for g in data.genres %}
+        <li>{{ g.name }}</li>
+    {% endfor %}
+</ul>
+<h2>Runtime</h2>
+<ul>
+        <li>{{ data.runtime }} minutes</li>
+</ul>
+<h2>Revenue</h2>
+<ul>
+        <li>{{ revenue }} $</li>
+</ul>
+
+
+<!-- Back Button -->
+<button onclick="history.back()" class="btn btn-secondary">Go Back</button>
+{% endblock %}
